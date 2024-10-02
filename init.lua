@@ -8,8 +8,8 @@ require("config.telescope")
 require("config.neotree")
 
 -- vim.cmd("colorscheme nightfox")
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 vim.opt.smartindent = true
 
@@ -56,10 +56,32 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+vim.g.mapleader = " "
+vim.g.background = "light"
+
+vim.opt.winbar = "%=%m %f"
+
+-- Navigate vim panes better
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "python",
+-- 	callback = function()
+-- 		vim.fn.system("poetry env info -p")
+-- 		if vim.v.shell_error == 0 then
+-- 			vim.g.python3_host_prog = vim.fn.trim(vim.fn.system("poetry env info -p")) .. "/bin/python"
+-- 		end
+-- 	end,
+-- })

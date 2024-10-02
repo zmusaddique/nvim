@@ -19,6 +19,7 @@ return {
           "typescript",
           "rust",
           "python",
+          "dart",
         },
         sync_install = false,
         auto_install = true,
